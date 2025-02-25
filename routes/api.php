@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Api'], function() {
-  Route::post('/auth/register', 'UserController@createUser');
-  Route::post('/auth/login', 'UserController@loginUser');
+Route::post('/auth/register', 'UserController@createUser');
+Route::post('/auth/login', 'UserController@loginUser');
 
-  // Authentication Middleware
-  Route::group(['middleware'=>['auth:sanctum']], function() {
-    Route::any('/checkout', 'PayController@checkout');
-    Route::any('/courseList', 'CourseController@courseList');
-    Route::any('/courseDetail', 'CourseController@courseDetail');
-  });
+// Authentication Middleware
+Route::group(['middleware'=>['auth:sanctum']], function() {
+  Route::any('/checkout', 'PayController@checkout');
+  Route::any('/courseList', 'CourseController@courseList');
+  Route::any('/courseDetail', 'CourseController@courseDetail');
 });
