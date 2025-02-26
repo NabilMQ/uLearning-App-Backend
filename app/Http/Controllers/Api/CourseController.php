@@ -18,6 +18,7 @@ class CourseController extends Controller
                 'lesson_length',
                 'video_length',
                 'price',
+                'follow',
                 'id'
             ])->get();
 
