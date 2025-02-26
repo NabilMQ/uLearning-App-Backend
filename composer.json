@@ -11,7 +11,8 @@
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "stripe/stripe-php": "^16.5"
+        "stripe/stripe-php": "^16.5",
+        "xendit/xendit-php": "^6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

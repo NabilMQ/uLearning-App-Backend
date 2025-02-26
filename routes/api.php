@@ -20,7 +20,8 @@ Route::group(['namespace' => 'Api'], function() {
 
   // Authentication Middleware
   Route::group(['middleware'=>['auth:sanctum']], function() {
-    Route::any('/checkout', 'PayController@checkout');
+    Route::any('/checkout/stripe', 'PayController@checkoutStripe');
+    Route::any('/checkout/xendit', 'PayController@createInvoiceXendit');
     Route::any('/courseList', 'CourseController@courseList');
     Route::any('/courseDetail', 'CourseController@courseDetail');
   });
