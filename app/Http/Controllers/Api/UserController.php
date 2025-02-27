@@ -99,6 +99,59 @@ class UserController extends Controller
         }
     }
 
+    public function loginAdmin(Request $request) 
+    {
+
+        try {
+            $validateUser = Validator::make($request->all(),
+            [
+                'avatar' => 'required',
+                'type' => 'required',
+                'open_id' => 'required',
+                'name' => 'required',
+                'email' => 'required|email|regex:(admin@gmail.com)',
+                'password' => 'required', 
+            ]);
+
+            if ($validateUser->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors(),
+                ], 401);
+            }
+            
+            // validated will have all user fie lds values
+            // we can save in the database
+            $validated = $validateUser->validated();
+
+            $map = [];
+            // email, phone, gogle, facebook, apple
+            $map['type'] = $validated['type'];
+            $map['open_id'] = $validated['open_id'];
+
+            $user = User::where($map)->first();  
+            
+            // User previously has logged in
+            $accessToken = $user->createToken(uniqid())->plainTextToken; 
+            $user->access_token = $accessToken;
+            User::where('open_id', '=', $validated['open_id'])->update([
+                'access_token' => $accessToken,
+            ]);
+            
+            return response()->json([
+                'code' => 200,
+                'msg' => 'Successfully Logging In as a Admin',
+                'data' => $user,
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'code' => 500,
+                'message' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
     public function loginUser(Request $request)
     {
         try {

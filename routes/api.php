@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api'], function() {
   Route::post('/auth/register', 'UserController@createUser');
   Route::post('/auth/login', 'UserController@loginUser');
+  Route::post('/auth/loginAdmin', 'UserController@loginAdmin');
 
   // Authentication Middleware
   Route::group(['middleware'=>['auth:sanctum']], function() {
