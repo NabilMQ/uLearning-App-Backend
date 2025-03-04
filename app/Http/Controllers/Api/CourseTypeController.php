@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Course;
 use App\Models\CourseType;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,6 +20,15 @@ class CourseTypeController extends Controller
                 'updated_at',
             ])->get();
 
+            $temp = Course::select([
+                "type_id"
+            ])
+            -> get();
+
+            foreach ($temp as $type) {
+                $result[$type["type_id"]]["count"] += 1;
+            }
+            
             return response()->json([
                 'code' => 200,
                 'msg' => "Successfully getting response",
