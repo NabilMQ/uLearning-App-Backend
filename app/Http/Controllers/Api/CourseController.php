@@ -35,8 +35,6 @@ class CourseController extends Controller
                 'data' => null,
             ], 500);
         }
-
-
     }
 
     public function courseDetail(Request $request) {
