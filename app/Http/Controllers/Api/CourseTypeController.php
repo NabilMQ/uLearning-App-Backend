@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CourseTypeController extends Controller
 {
-    public function courseTypeList() {
+    public function courseTypeListAdmin() {
 
         try {
             $result = CourseType::select([
@@ -17,17 +17,10 @@ class CourseTypeController extends Controller
                 'title',
                 'description',
                 'created_at',
-                'updated_at',
+                'updated_at',                
+            ])->withCount([
+                'courses as count',
             ])->get();
-
-            $temp = Course::select([
-                "type_id"
-            ])
-            -> get();
-
-            foreach ($temp as $type) {
-                $result[$type["type_id"]]["count"] += 1;
-            }
             
             return response()->json([
                 'code' => 200,

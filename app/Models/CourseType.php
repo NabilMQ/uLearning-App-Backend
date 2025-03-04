@@ -10,4 +10,9 @@ class CourseType extends Model
 {
     use HasFactory;
     use ModelTree;
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'type_id', 'id');
+    }
 }
