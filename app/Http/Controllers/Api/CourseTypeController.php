@@ -12,7 +12,9 @@ class CourseTypeController extends Controller
     public function courseTypeListAdmin() {
 
         try {
-            $result = CourseType::select([
+            $result = CourseType::orderBy(
+                "id"
+            )->select([
                 'id',
                 'title',
                 'description',

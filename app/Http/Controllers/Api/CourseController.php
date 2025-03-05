@@ -12,7 +12,9 @@ class CourseController extends Controller
     public function courseList() {
 
         try {
-            $result = Course::select([
+            $result = Course::orderBy(
+                "id"
+            )->select([
                 'name',
                 'description',
                 'thumbnail',
@@ -40,7 +42,9 @@ class CourseController extends Controller
     public function courseListAdmin() {
 
         try {
-            $result = Course::select([
+            $result = Course::orderBy(
+                "id"
+            )->select([
                 'id',
                 'name',
                 'type_id',
