@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Api'], function() {
   Route::post('/auth/register', 'UserController@createUser');
   Route::post('/auth/login', 'UserController@loginUser');
   Route::post('/auth/loginAdmin', 'UserController@loginAdmin');
+  Route::post('/auth/loginFirebaseAdmin', 'FirebaseAuthController@loginFirebaseAdmin');
 
   // Authentication Middleware
   Route::group(['middleware'=>['auth:sanctum']], function() {
