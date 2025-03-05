@@ -194,12 +194,14 @@ class UserController extends Controller
     public function userListAdmin()
     {
         try {
-            $result = User::select([
-                'id',
-                'name',
-                'email',
-                'created_at',                
-            ])->orderBy("id")->get();
+            $result = User::orderBy(
+                "id"
+            )->select([
+                "id",
+                "name",
+                "email",
+                "created_at",
+            ])->get();
             
             return response()->json([
                 'code' => 200,
