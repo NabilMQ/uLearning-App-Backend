@@ -27,5 +27,6 @@ Route::group(['namespace' => 'Api'], function() {
     Route::any('/courseListAdmin', 'CourseController@courseListAdmin');
     Route::any('/courseTypeListAdmin', 'CourseTypeController@courseTypeListAdmin');
     Route::any('/courseDetail', 'CourseController@courseDetail');
+    Route::any('/userListAdmin', 'UserController@userListAdmin');
   });
 });

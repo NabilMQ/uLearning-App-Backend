@@ -190,4 +190,29 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function userListAdmin()
+    {
+        try {
+            $result = User::select([
+                'id',
+                'name',
+                'email',
+                'created_at',                
+            ])->orderBy("id")->get();
+            
+            return response()->json([
+                'code' => 200,
+                'msg' => "Successfully getting response",
+                'data' => $result,
+            ], 200);
+        }
+        catch (\Throwable $th) {
+            return response()->json([
+                'code' => 500,
+                'msg' => $th->getMessage(),
+                'data' => null,
+            ], 500);
+        }
+    }
 }
