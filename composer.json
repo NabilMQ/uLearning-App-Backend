@@ -12,6 +12,8 @@
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "league/flysystem-aws-s3-v3": "^3.29",
+        "rafaelwendel/phpsupabase": "^0.0.8",
         "stripe/stripe-php": "^16.6",
         "xendit/xendit-php": "^6.2"
     },

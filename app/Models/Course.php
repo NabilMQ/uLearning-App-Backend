@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    protected $guarded=['id'];
+    
     public function type()
     {
         return $this->hasOne(CourseType::class, 'id', 'type_id')->select(['id', 'title']);

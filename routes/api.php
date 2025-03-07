@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Api'], function() {
     Route::any('/checkout/stripe', 'PayController@checkoutStripe');
     Route::any('/checkout/xendit', 'PayController@createInvoiceXendit');
     Route::any('/courseList', 'CourseController@courseList');
+    Route::any('/courseCreateAdmin', 'CourseController@courseCreateAdmin');
     Route::any('/courseListAdmin', 'CourseController@courseListAdmin');
     Route::any('/courseTypeListAdmin', 'CourseTypeController@courseTypeListAdmin');
     Route::any('/courseDetail', 'CourseController@courseDetail');
